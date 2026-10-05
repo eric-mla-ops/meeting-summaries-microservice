@@ -1,0 +1,246 @@
+[
+  {
+    "name": "minimal",
+    "interaction": {
+      "id": "i-1",
+      "participant_name": "Jane Advisor",
+      "participant_email": "Jane@Firm.com",
+      "summary": "Good intro call"
+    },
+    "expected": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> Good intro call<br>\n<!-- /mla-summary -->"
+  },
+  {
+    "name": "arrays_and_text",
+    "interaction": {
+      "id": "i-1",
+      "participant_name": "Jane Advisor",
+      "participant_email": "Jane@Firm.com",
+      "summary": "Talked fees",
+      "call_type": "discovery",
+      "call_sentiment": "engaged",
+      "pain_points": [
+        "high fees",
+        "slow reporting"
+      ],
+      "objections": [
+        "minimums"
+      ],
+      "next_steps": "Send deck",
+      "mla_action_items": [
+        "Send deck",
+        "Book follow-up"
+      ],
+      "client_action_items": []
+    },
+    "expected": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> Talked fees<br>\n<b>Call Type:</b> discovery<br>\n<b>Sentiment:</b> engaged<br>\n<b>Next Steps:</b> Send deck<br>\n<b>Pain Points:</b> high fees, slow reporting<br>\n<b>Objections:</b> minimums<br>\n<b>Action Items (MLA):</b> Send deck, Book follow-up<br>\n<!-- /mla-summary -->"
+  },
+  {
+    "name": "competitors_dicts_and_strings",
+    "interaction": {
+      "id": "i-1",
+      "participant_name": "Jane Advisor",
+      "participant_email": "Jane@Firm.com",
+      "summary": "x",
+      "competitor_mentions": [
+        {
+          "name": "Acme",
+          "sentiment": "negative",
+          "detail": "slow"
+        },
+        {
+          "name": "Beta",
+          "sentiment": "neutral"
+        },
+        {
+          "name": "Gamma",
+          "detail": "cheap"
+        },
+        {
+          "name": "Delta"
+        },
+        "Legacy Co",
+        {
+          "sentiment": "x"
+        },
+        42
+      ]
+    },
+    "expected": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> x<br>\n<b>Competitor Mentions:</b> Acme (negative): slow, Beta (neutral), Gamma: cheap, Delta, Legacy Co<br>\n<!-- /mla-summary -->"
+  },
+  {
+    "name": "communication_prefs_dict",
+    "interaction": {
+      "id": "i-1",
+      "participant_name": "Jane Advisor",
+      "participant_email": "Jane@Firm.com",
+      "summary": "x",
+      "communication_prefs": {
+        "method": "email",
+        "frequency": "weekly",
+        "time": "mornings"
+      }
+    },
+    "expected": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> x<br>\n<b>Communication Preferences:</b> email, weekly, mornings<br>\n<!-- /mla-summary -->"
+  },
+  {
+    "name": "communication_prefs_partial",
+    "interaction": {
+      "id": "i-1",
+      "participant_name": "Jane Advisor",
+      "participant_email": "Jane@Firm.com",
+      "summary": "x",
+      "communication_prefs": {
+        "method": "phone"
+      }
+    },
+    "expected": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> x<br>\n<b>Communication Preferences:</b> phone<br>\n<!-- /mla-summary -->"
+  },
+  {
+    "name": "communication_prefs_string",
+    "interaction": {
+      "id": "i-1",
+      "participant_name": "Jane Advisor",
+      "participant_email": "Jane@Firm.com",
+      "summary": "x",
+      "communication_prefs": "text me"
+    },
+    "expected": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> x<br>\n<b>Communication Preferences:</b> text me<br>\n<!-- /mla-summary -->"
+  },
+  {
+    "name": "html_escaping",
+    "interaction": {
+      "id": "i-1",
+      "participant_name": "Jane Advisor",
+      "participant_email": "Jane@Firm.com",
+      "summary": "<script>alert('x')</script> & more",
+      "pain_points": [
+        "a<b",
+        "c>d"
+      ]
+    },
+    "expected": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> &lt;script&gt;alert(&#x27;x&#x27;)&lt;/script&gt; &amp; more<br>\n<b>Pain Points:</b> a&lt;b, c&gt;d<br>\n<!-- /mla-summary -->"
+  },
+  {
+    "name": "no_name",
+    "interaction": {
+      "id": "i-1",
+      "participant_name": null,
+      "participant_email": "Jane@Firm.com",
+      "summary": "x"
+    },
+    "expected": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane@Firm.com<br>\n<b>Meeting Summary:</b> x<br>\n<!-- /mla-summary -->"
+  },
+  {
+    "name": "no_email",
+    "interaction": {
+      "id": "i-1",
+      "participant_name": "Jane Advisor",
+      "participant_email": null,
+      "summary": "x"
+    },
+    "expected": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor<br>\n<b>Meeting Summary:</b> x<br>\n<!-- /mla-summary -->"
+  },
+  {
+    "name": "no_identity",
+    "interaction": {
+      "id": "i-1",
+      "participant_name": null,
+      "participant_email": null,
+      "summary": "x"
+    },
+    "expected": "<!-- mla-summary:i-1 -->\n<b>Meeting Summary:</b> x<br>\n<!-- /mla-summary -->"
+  },
+  {
+    "name": "empty_values",
+    "interaction": {
+      "id": "i-1",
+      "participant_name": "Jane Advisor",
+      "participant_email": "Jane@Firm.com",
+      "summary": "",
+      "pain_points": [],
+      "objections": null,
+      "competitor_mentions": [],
+      "communication_prefs": {}
+    },
+    "expected": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<!-- /mla-summary -->"
+  },
+  {
+    "name": "everything",
+    "interaction": {
+      "id": "i-1",
+      "participant_name": "Jane Advisor",
+      "participant_email": "Jane@Firm.com",
+      "summary": "s",
+      "call_type": "pitch",
+      "call_sentiment": "enthusiastic",
+      "communication_style": "direct",
+      "decision_style": "committee",
+      "relationship_temp": "warm",
+      "likelihood_to_proceed": "high",
+      "next_steps": "n",
+      "next_touchpoint": "2026-10-12",
+      "pain_points": [
+        "p"
+      ],
+      "objections": [
+        "o"
+      ],
+      "desired_outcomes": [
+        "d"
+      ],
+      "mla_capabilities_discussed": [
+        "structured_notes",
+        "sma"
+      ],
+      "proposals_made": [
+        "pm"
+      ],
+      "what_resonated": [
+        "wr"
+      ],
+      "mla_action_items": [
+        "a"
+      ],
+      "client_action_items": [
+        "c"
+      ],
+      "materials_to_send": [
+        "m"
+      ],
+      "notes_discussed": [
+        "nd"
+      ],
+      "red_flags": [
+        "rf"
+      ],
+      "notable_quotes": [
+        "q"
+      ],
+      "hobbies_interests": [
+        "golf"
+      ],
+      "family_details": [
+        "3 kids"
+      ],
+      "travel": [
+        "Italy"
+      ],
+      "personal_excitement": [
+        "boat"
+      ],
+      "competitor_mentions": [
+        {
+          "name": "Acme",
+          "sentiment": "neutral",
+          "detail": "ok"
+        }
+      ],
+      "communication_prefs": {
+        "method": "email",
+        "frequency": "monthly",
+        "time": "pm"
+      }
+    },
+    "expected": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> s<br>\n<b>Call Type:</b> pitch<br>\n<b>Sentiment:</b> enthusiastic<br>\n<b>Communication Style:</b> direct<br>\n<b>Decision Style:</b> committee<br>\n<b>Relationship Temperature:</b> warm<br>\n<b>Likelihood to Proceed:</b> high<br>\n<b>Next Steps:</b> n<br>\n<b>Next Touchpoint:</b> 2026-10-12<br>\n<b>Pain Points:</b> p<br>\n<b>Objections:</b> o<br>\n<b>Desired Outcomes:</b> d<br>\n<b>MLA Capabilities Discussed:</b> structured_notes, sma<br>\n<b>Proposals Made:</b> pm<br>\n<b>What Resonated:</b> wr<br>\n<b>Action Items (MLA):</b> a<br>\n<b>Action Items (Client):</b> c<br>\n<b>Materials to Send:</b> m<br>\n<b>Notes Discussed:</b> nd<br>\n<b>Red Flags:</b> rf<br>\n<b>Notable Quotes:</b> q<br>\n<b>Hobbies/Interests:</b> golf<br>\n<b>Family Details:</b> 3 kids<br>\n<b>Travel:</b> Italy<br>\n<b>Personal Excitement:</b> boat<br>\n<b>Competitor Mentions:</b> Acme (neutral): ok<br>\n<b>Communication Preferences:</b> email, monthly, pm<br>\n<!-- /mla-summary -->"
+  }
+]

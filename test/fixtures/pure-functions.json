@@ -1,0 +1,175 @@
+{
+  "split_name": [
+    {
+      "in": "Jane Q Advisor",
+      "out": [
+        "Jane",
+        "Q Advisor"
+      ]
+    },
+    {
+      "in": "Cher",
+      "out": [
+        "Cher",
+        null
+      ]
+    },
+    {
+      "in": null,
+      "out": [
+        null,
+        null
+      ]
+    },
+    {
+      "in": "",
+      "out": [
+        null,
+        null
+      ]
+    },
+    {
+      "in": "   ",
+      "out": [
+        null,
+        null
+      ]
+    },
+    {
+      "in": "  Jane   Advisor  ",
+      "out": [
+        "Jane",
+        "Advisor"
+      ]
+    }
+  ],
+  "normalize_email": [
+    {
+      "in": "  Jane@Firm.COM ",
+      "out": "jane@firm.com"
+    },
+    {
+      "in": null,
+      "out": null
+    },
+    {
+      "in": "",
+      "out": null
+    },
+    {
+      "in": "  ",
+      "out": null
+    },
+    {
+      "in": "a@b.com",
+      "out": "a@b.com"
+    }
+  ],
+  "meeting_time": [
+    {
+      "interaction": {
+        "interaction_date": "2026-10-05"
+      },
+      "transcript": {
+        "meeting_date": "2026-10-05T17:00:00+00:00"
+      },
+      "out": "2026-10-05T17:00:00Z"
+    },
+    {
+      "interaction": {
+        "interaction_date": "2026-10-05T14:30:00+00:00"
+      },
+      "transcript": {
+        "meeting_date": null
+      },
+      "out": "2026-10-05T14:30:00Z"
+    },
+    {
+      "interaction": {
+        "interaction_date": "2026-10-05"
+      },
+      "transcript": {
+        "meeting_date": null
+      },
+      "out": null
+    },
+    {
+      "interaction": {
+        "interaction_date": null
+      },
+      "transcript": {
+        "meeting_date": null
+      },
+      "out": null
+    },
+    {
+      "interaction": {
+        "interaction_date": "2026-10-05"
+      },
+      "transcript": {
+        "meeting_date": "2026-10-05T17:00:00Z"
+      },
+      "out": "2026-10-05T17:00:00Z"
+    },
+    {
+      "interaction": {
+        "interaction_date": null
+      },
+      "transcript": {
+        "meeting_date": "1759683600"
+      },
+      "out": "2025-10-05T17:00:00Z"
+    },
+    {
+      "interaction": {
+        "interaction_date": null
+      },
+      "transcript": {
+        "meeting_date": "garbage"
+      },
+      "out": null
+    }
+  ],
+  "title": [
+    {
+      "interaction": {
+        "participant_name": "Jane Advisor",
+        "call_type": "discovery"
+      },
+      "transcript": {
+        "meeting_title": "MLA / Firm intro"
+      },
+      "out": "MLA / Firm intro"
+    },
+    {
+      "interaction": {
+        "participant_name": "Jane Advisor",
+        "call_type": "discovery"
+      },
+      "transcript": {
+        "meeting_title": null
+      },
+      "out": "Meeting: Jane Advisor - discovery"
+    },
+    {
+      "interaction": {
+        "participant_name": "Jane Advisor",
+        "call_type": null
+      },
+      "transcript": {
+        "meeting_title": null
+      },
+      "out": "Meeting: Jane Advisor"
+    },
+    {
+      "interaction": {
+        "participant_name": null,
+        "call_type": "discovery"
+      },
+      "transcript": {
+        "meeting_title": null
+      },
+      "out": null
+    }
+  ]
+}

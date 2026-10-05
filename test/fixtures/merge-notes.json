@@ -1,0 +1,37 @@
+[
+  {
+    "name": "empty",
+    "existing": null,
+    "block": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> Good intro call<br>\n<!-- /mla-summary -->",
+    "id": "i-1",
+    "expected": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> Good intro call<br>\n<!-- /mla-summary -->"
+  },
+  {
+    "name": "append",
+    "existing": "Drew: great prospect",
+    "block": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> Good intro call<br>\n<!-- /mla-summary -->",
+    "id": "i-1",
+    "expected": "Drew: great prospect\n<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> Good intro call<br>\n<!-- /mla-summary -->"
+  },
+  {
+    "name": "replace_own",
+    "existing": "before\n<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> Good intro call<br>\n<!-- /mla-summary -->\nmiddle\n<!-- mla-summary:i-2 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> other<br>\n<!-- /mla-summary -->\nafter",
+    "block": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> new<br>\n<!-- /mla-summary -->",
+    "id": "i-1",
+    "expected": "before\n<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> new<br>\n<!-- /mla-summary -->\nmiddle\n<!-- mla-summary:i-2 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> other<br>\n<!-- /mla-summary -->\nafter"
+  },
+  {
+    "name": "whitespace_only",
+    "existing": "  \n ",
+    "block": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> Good intro call<br>\n<!-- /mla-summary -->",
+    "id": "i-1",
+    "expected": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> Good intro call<br>\n<!-- /mla-summary -->"
+  },
+  {
+    "name": "trailing_newlines",
+    "existing": "human\n\n\n",
+    "block": "<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> Good intro call<br>\n<!-- /mla-summary -->",
+    "id": "i-1",
+    "expected": "human\n<!-- mla-summary:i-1 -->\n<b>Participant:</b> Jane Advisor (Jane@Firm.com)<br>\n<b>Meeting Summary:</b> Good intro call<br>\n<!-- /mla-summary -->"
+  }
+]
