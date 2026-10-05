@@ -1,0 +1,10 @@
+# Production-style run (compiled build, no bind-mount, restarts on failure):
+#   docker compose -f compose.yaml -f compose.prod.yaml up --build -d
+services:
+  app:
+    build:
+      target: prod
+    volumes: !reset []
+    healthcheck:
+      start_period: 15s
+    restart: unless-stopped

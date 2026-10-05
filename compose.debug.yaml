@@ -1,0 +1,8 @@
+# Dev stack with the Node inspector exposed to the host (localhost only):
+#   docker compose -f compose.yaml -f compose.debug.yaml up --build
+# Attach from VS Code or Chrome (chrome://inspect).
+services:
+  app:
+    command: ["npx", "nest", "start", "--debug", "0.0.0.0:9229", "--watch"]
+    ports:
+      - "127.0.0.1:9229:9229"
