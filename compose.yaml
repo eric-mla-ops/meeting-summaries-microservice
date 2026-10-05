@@ -1,0 +1,29 @@
+# Dev stack (hot reload, source bind-mounted):
+#   cp .env.example .env   # fill in the secrets
+#   docker compose up --build
+services:
+  app:
+    build:
+      context: .
+      target: dev
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      PORT: 3000
+    env_file:
+      - path: .env
+        required: false
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:3000/health"]
+      interval: 15s
+      timeout: 3s
+      retries: 5
+      start_period: 40s
+    volumes:
+      - .:/app
+      # keep the container's node_modules rather than the host's
+      - /app/node_modules
+    develop:
+      watch:
+        - action: rebuild
+          path: package.json
